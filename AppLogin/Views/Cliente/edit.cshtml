@@ -1,0 +1,121 @@
+﻿@model Cliente;
+<html>
+<head>
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        /* Estilos para el formulario de inicio de sesión */
+
+        /* Estilo para el contenedor principal */
+        body {
+            background-color: darkolivegreen;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el encabezado de la tarjeta */
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #007bff;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 10px;
+        }
+
+        /* Estilo para el cuerpo de la tarjeta */
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Estilo para los campos de entrada */
+        .form-control {
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Estilo para el botón */
+        .btn-primary {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        /* Estilo para la alerta de error */
+        .alert-danger {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body style="background-color:darkolivegreen">
+    <h2 class="text-center">Editar Usuario</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-controller="Cliente" asp-action="edit" method="post">
+                <input type="hidden" asp-for="id" />
+
+                <div class="form-group">
+                    <label asp-for="nombre" class="control-label"></label>
+                    <input required asp-for="nombre" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="apellido" class="control-label"></label>
+                    <input required asp-for="apellido" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="cedula" class="control-label"></label>
+                    <input required asp-for="cedula" class="form-control" type="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="direccion" class="control-label"></label>
+                    <input required asp-for="direccion" class="form-control" type="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="telefono" class="control-label"></label>
+                    <input required asp-for="telefono" class="form-control" type="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" asp-for="fechaModificacion" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="estado" class="control-label">Estado:</label><br />
+                    <input asp-for="estado" type="checkbox" value="true" /> Activo
+                </div>
+
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a asp-action="List" class="btn btn-secondary">Cancelar</a>
+                </div>
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

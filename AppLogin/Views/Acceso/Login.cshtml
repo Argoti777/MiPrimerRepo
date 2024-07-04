@@ -1,0 +1,101 @@
+﻿@model AppLogin.ViewModels.UsuarioVM;
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        /* Estilos para el formulario de inicio de sesión */
+
+        /* Estilo para el contenedor principal */
+        body {
+            background-color: darkolivegreen;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el encabezado de la tarjeta */
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #007bff;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 10px;
+        }
+
+        /* Estilo para el cuerpo de la tarjeta */
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Estilo para los campos de entrada */
+        .form-control {
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Estilo para el botón */
+        .btn-primary {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        /* Estilo para la alerta de error */
+        .alert-danger {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Iniciar Sesion
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Acceso" asp-action="Login" method="post">
+                        
+                        <input class="form-control mb-3" type="text" placeholder="Usuario" required asp-for="usuario" />
+                        <input class="form-control mb-3" type="password" placeholder="Contraseña" required asp-for="clave" />
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
+
+                        </div>
+                        @if (ViewData["Mensaje"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Mensaje"]
+                            </div>
+                        }
+                            
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
